@@ -10,13 +10,6 @@ store.dispatch(getProducts());
 store.dispatch(getOffers());
 
 render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root'),
-);
-
-render(
   <Provider store={store}>
     <App />
   </Provider>,

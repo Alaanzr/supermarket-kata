@@ -1,4 +1,4 @@
 [
-  { "id": "a44ea986-380c-4fa8-a623-ab455b9105f1", "productId": "dd617b0b-1010-4275-a4cd-8a3c6d1ad26c", "type": "quantity-discount", "purchaseRequirement": 3, "soldAsXQuantity": 2 },
-  { "id": "ddb33ec4-7e31-4cfd-85a7-7de35a906847", "productId": "3aa7a89c-b942-449c-9267-2e27ed5252a2", "type": "price-discount", "purchaseRequirement": 2, "overridePrice": 1 }
+  { "id": "a44ea986-380c-4fa8-a623-ab455b9105f1", "productId": "dd617b0b-1010-4275-a4cd-8a3c6d1ad26c", "type": "get-x-free", "purchaseRequirement": 3, "soldAsXQuantity": 2 },
+  { "id": "ddb33ec4-7e31-4cfd-85a7-7de35a906847", "productId": "3aa7a89c-b942-449c-9267-2e27ed5252a2", "type": "fixed-discount", "purchaseRequirement": 2, "overridePrice": 1 }
 ]

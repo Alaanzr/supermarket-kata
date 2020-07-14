@@ -1,5 +1,5 @@
 [
-  { "id": "dd617b0b-1010-4275-a4cd-8a3c6d1ad26c", "name": "beans", "unitPrice": 0.50, "weightedPrice": null },
-  { "id": "3aa7a89c-b942-449c-9267-2e27ed5252a2", "name": "coke", "unitPrice": 0.70, "weightedPrice": null },
-  { "id": "3000e646-0ebe-4e16-a677-bd359b313135", "name": "oranges", "unitPrice": null, "weightedPrice": 1.99, "weightedQuantity": 0.1 }
+  { "id": "dd617b0b-1010-4275-a4cd-8a3c6d1ad26c", "name": "beans", "soldAs": "unit", "price": 0.50 },
+  { "id": "3aa7a89c-b942-449c-9267-2e27ed5252a2", "name": "coke", "soldAs": "unit", "price": 0.70 },
+  { "id": "3000e646-0ebe-4e16-a677-bd359b313135", "name": "oranges", "soldAs": "measurement", "price": 1.99, "quantity": 0.1, "measurementUnit": "kg" }
 ]

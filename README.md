@@ -1,4 +1,21 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Supermarket kata
+
+## Project design
+
+For this task, I decided to follow a data-driven design approach. The bulk of the complexity lies in the discount calculations, I therefore adopted a variation of the Strategy pattern, whereby the type of `offer` retrieved from the backend system dictates how discounts should be applied. 
+
+The benefit of this approach is that when a new offer is made available, we simply need to write a new implementation strategy to accomodate it, and could even provide an administrative UI view for admins to create new types of offers. For example, if a new type of offer was made that offered a flat rate discount if the cart spend exceeded £x, then this would simply require a new offer type to be created in the backend, and a new discount strategy written up.
+
+I make some assumptions about how this offer data is retrieved; since each offer has a slightly different schema, I'm assuming that we have some kind of intermediary aggregation layer (perhaps GraphQL) that retrieves the various offer types.
+
+## Modifications to be made in a production system
+
+It's important to note that I would make the following changes if this were a production system, namely:
+
+- Discounts would ultimately be applied and validated in the backend
+- Stock checks before adding items to the cart
+- I'd consider using GraphQL for aggregation of offer data and Apollo for cached queries
+- More page tests - particularly around edge cases (like what to do if the discounts applied cause the total to drop below £0)
 
 ## Available Scripts
 
@@ -15,54 +32,3 @@ You will also see any lint errors in the console.
 ### `yarn test`
 
 Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `yarn build`
-
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `yarn build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify

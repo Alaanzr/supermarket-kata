@@ -1,9 +1,9 @@
-const calculatePriceDiscount = (products, offer, discounts = []) => {
+const fixedDiscountStrategy = (products, offer, discounts = []) => {
   while (products.length) {
     const subgroup = products.splice(0, offer.purchaseRequirement);
     if (subgroup.length >= offer.purchaseRequirement) {
       const product = subgroup[0];
-      const saving = product.unitPrice * subgroup.length - offer.overridePrice;
+      const saving = product.price * subgroup.length - offer.overridePrice;
 
       discounts.push({
         amount: saving,
@@ -15,12 +15,12 @@ const calculatePriceDiscount = (products, offer, discounts = []) => {
   return discounts;
 };
 
-const calculateQuantityDiscount = (products, offer, discounts = []) => {
+const getXFreeStrategy = (products, offer, discounts = []) => {
   while (products.length) {
     const subgroup = products.splice(0, offer.purchaseRequirement);
     if (subgroup.length >= offer.purchaseRequirement) {
       const product = subgroup[0];
-      const saving = product.unitPrice * subgroup.length - offer.soldAsXQuantity * product.unitPrice;
+      const saving = product.price * subgroup.length - offer.soldAsXQuantity * product.price;
 
       discounts.push({
         amount: saving,
@@ -36,12 +36,12 @@ export const calculateDiscounts = (products, offers) => {
   const discounts = [];
 
   offers.forEach((offer) => {
-    if (offer.type === 'price-discount') {
+    if (offer.type === 'fixed-discount') {
       const matchingProducts = [...products].filter((product) => product.id === offer.productId);
-      calculatePriceDiscount(matchingProducts, offer, discounts);
-    } else if (offer.type === 'quantity-discount') {
+      fixedDiscountStrategy(matchingProducts, offer, discounts);
+    } else if (offer.type === 'get-x-free') {
       const matchingProducts = [...products].filter((product) => product.id === offer.productId);
-      calculateQuantityDiscount(matchingProducts, offer, discounts);
+      getXFreeStrategy(matchingProducts, offer, discounts);
     }
   });
 
