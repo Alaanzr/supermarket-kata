@@ -1,8 +1,8 @@
 import { renderPage } from './helpers/render-page';
 import { fireEvent } from '@testing-library/react';
 import App from '../App';
-import { createOffer } from './test-data/offer';
-import { createProduct } from './test-data/product';
+import { createOffer } from './test-data/offers';
+import { createProduct } from './test-data/products';
 
 describe('App page', () => {
   const product1 = createProduct({

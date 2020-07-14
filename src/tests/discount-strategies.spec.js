@@ -1,6 +1,6 @@
 import { calculateDiscounts } from '../helpers/discount-strategies';
-import { createOffer } from './test-data/offer';
-import { createProduct } from './test-data/product';
+import { createOffer } from './test-data/offers';
+import { createProduct } from './test-data/products';
 
 describe('Discount strategies', () => {
   const product = createProduct({

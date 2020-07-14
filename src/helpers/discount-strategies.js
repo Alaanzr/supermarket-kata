@@ -1,4 +1,4 @@
-const fixedDiscountStrategy = (products, offer, discounts = []) => {
+const fixedDiscountStrategy = (products, offer, discounts) => {
   while (products.length) {
     const subgroup = products.splice(0, offer.purchaseRequirement);
     if (subgroup.length >= offer.purchaseRequirement) {
@@ -11,11 +11,9 @@ const fixedDiscountStrategy = (products, offer, discounts = []) => {
       });
     }
   }
-
-  return discounts;
 };
 
-const getXFreeStrategy = (products, offer, discounts = []) => {
+const getXFreeStrategy = (products, offer, discounts) => {
   while (products.length) {
     const subgroup = products.splice(0, offer.purchaseRequirement);
     if (subgroup.length >= offer.purchaseRequirement) {
@@ -28,13 +26,9 @@ const getXFreeStrategy = (products, offer, discounts = []) => {
       });
     }
   }
-
-  return discounts;
 };
 
-export const calculateDiscounts = (products, offers) => {
-  const discounts = [];
-
+export const calculateDiscounts = (products, offers, discounts = []) => {
   offers.forEach((offer) => {
     if (offer.type === 'fixed-discount') {
       const matchingProducts = [...products].filter((product) => product.id === offer.productId);
