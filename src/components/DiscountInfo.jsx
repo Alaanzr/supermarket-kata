@@ -19,7 +19,7 @@ const DiscountInfo = ({ discounts }) => {
       </Typography>
       <Divider />
       <Typography variant="body1" component="div">
-        Total savings: £{discounts.reduce((acc, val) => (acc += val.amount), 0).toFixed(2)}
+        Total savings: -£{discounts.reduce((acc, val) => (acc += val.amount), 0).toFixed(2)}
       </Typography>
       <Divider />
     </Fragment>

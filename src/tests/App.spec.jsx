@@ -1,5 +1,5 @@
 import { renderPage } from './helpers/render-page';
-import { fireEvent, waitFor } from '@testing-library/react';
+import { fireEvent } from '@testing-library/react';
 import App from '../App';
 import { createOffer } from './test-data/offer';
 import { createProduct } from './test-data/product';
@@ -53,12 +53,12 @@ describe('App page', () => {
     fireEvent.click(addProduct);
 
     expect(await findByText(/^sub-total: £5/i)).toBeInTheDocument();
-    expect(await findByText(/^total: £5/i)).toBeInTheDocument();
+    expect(await findByText(/^total to pay: £5/i)).toBeInTheDocument();
 
     fireEvent.click(removeProduct);
 
     expect(await queryByText(/^sub-total: £5/i)).toBeNull();
-    expect(await queryByText(/^total: £5/i)).toBeNull();
+    expect(await queryByText(/^total to pay: £5/i)).toBeNull();
   });
 
   it('should show savings when purchase requirements are met', async () => {
@@ -72,12 +72,12 @@ describe('App page', () => {
     fireEvent.click(addProduct1);
     fireEvent.click(addProduct1);
 
-    expect(await findByText(/total savings: £9/i));
+    expect(await findByText(/total savings: -£9/i));
 
     fireEvent.click(addProduct2);
     fireEvent.click(addProduct2);
     fireEvent.click(addProduct2);
 
-    expect(await findByText(/total savings: £10/i));
+    expect(await findByText(/total savings: -£10/i));
   });
 });

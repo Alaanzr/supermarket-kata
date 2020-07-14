@@ -18,7 +18,9 @@ const CartTable = ({ products }) => {
         <TableCell>
           {product.soldAs === 'unit'
             ? productList.length
-            : `${(productList.length * product.quantity).toFixed(2)} ${product.measurementUnit}`}
+            : `${(productList.length * product.quantity).toFixed(3)} ${product.measurementUnit} @ £${product.price}/${
+                product.measurementUnit
+              }`}
         </TableCell>
         <TableCell>{product.name}</TableCell>
         <TableCell>

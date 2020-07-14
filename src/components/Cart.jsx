@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import { css, jsx } from '@emotion/core';
 import { useState, useEffect } from 'react';
-import { connect } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { groupBy } from 'lodash';
 import { calculateDiscounts } from '../helpers/discount-strategies';
 import Typography from './Typography';
@@ -9,7 +9,10 @@ import CartTable from './CartTable';
 import Divider from '@material-ui/core/Divider';
 import DiscountInfo from './DiscountInfo';
 
-const Cart = ({ cart, offers }) => {
+const Cart = () => {
+  const cart = useSelector((state) => state.cart);
+  const offers = useSelector((state) => state.offers);
+
   const [subtotal, setSubtotal] = useState(0);
   const [total, setTotal] = useState(0);
   const [discounts, setDiscounts] = useState([]);
@@ -55,7 +58,7 @@ const Cart = ({ cart, offers }) => {
           <Divider />
           <DiscountInfo discounts={discounts} />
           <Typography variant="body1" component="div">
-            Total: £{total.toFixed(2)}
+            Total to pay: £{total.toFixed(2)}
           </Typography>
         </div>
       )}
@@ -63,10 +66,4 @@ const Cart = ({ cart, offers }) => {
   );
 };
 
-const mapStateToProps = (state) => ({
-  products: state.products,
-  cart: state.cart,
-  offers: state.offers,
-});
-
-export default connect(mapStateToProps)(Cart);
+export default Cart;

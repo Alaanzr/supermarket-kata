@@ -1,7 +1,7 @@
 import { render } from '@testing-library/react';
 import { Provider as ReduxProvider } from 'react-redux';
 import React from 'react';
-import store from '../../store';
+import store from '../../redux/store';
 
 export const renderPage = async (Page, { products, offers }) => {
   store.dispatch({
